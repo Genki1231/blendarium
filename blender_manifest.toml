@@ -1,0 +1,29 @@
+schema_version = "1.0.0"
+
+id = "blendarium"
+version = "1.0.0"
+name = "Blendarium"
+tagline = "A minimal starter template for learning add-on development"
+maintainer = "Your Name <you@example.com>"
+type = "add-on"
+
+blender_version_min = "4.2.0"
+
+license = [
+  "SPDX:MIT",
+]
+
+# Files to exclude when building the installable zip with
+# `blender --command extension build`.
+# NOTE: setting this REPLACES the defaults, so the default patterns
+# (__pycache__/, /.git/, /*.zip) must be listed again here.
+[build]
+paths_exclude_pattern = [
+  "__pycache__/",
+  "/.git/",
+  "/*.zip",
+  "/*.bat",
+  "/.gitignore",
+  "/.idea/",
+  "/dev_loader.py",
+]
