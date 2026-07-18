@@ -63,5 +63,7 @@ classes = (
 
 ## ライセンス
 
-MIT License（`LICENSE.md` を参照）。
+GPL-3.0-or-later（`LICENSE.md` を参照）。
+`bpy` に依存するアドオンは GPL 派生物と見なされるため、
+Blender Extensions として配布する場合は GPL 互換ライセンスが必須です。
 `blender_manifest.toml` の `maintainer` は各自の名前・メールに書き換えてください。
