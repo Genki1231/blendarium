@@ -1,0 +1,71 @@
+site_name: Blendarium
+site_url: https://genki1231.github.io/blendarium/
+repo_url: https://github.com/Genki1231/blendarium
+
+theme:
+  name: material
+  language: ja
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+  palette:
+    # Respect the visitor's operating-system preference on the first visit.
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: ダークモードに切り替える
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: ライトモードに切り替える
+
+nav:
+  - ホーム: index.md
+  # The generated api/SUMMARY.md supplies the module hierarchy for this directory.
+  - API リファレンス: api/
+
+plugins:
+  - search:
+      lang:
+        - ja
+        - en
+  # Generate virtual Markdown pages before MkDocs resolves the navigation tree.
+  - gen-files:
+      scripts:
+        - docs/gen_api_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - mkdocstrings:
+      handlers:
+        python:
+          # The repository directory is the blendarium package, so its parent must
+          # be on Griffe's search path both locally and in the default CI checkout.
+          paths:
+            - ..
+          options:
+            # Disable runtime fallback so importing bpy is never required for a build.
+            allow_inspection: false
+            docstring_style: google
+            members_order: source
+            show_source: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_signature_annotations: true
+            separate_signature: true
+            merge_init_into_class: true
+            show_if_no_docstring: true
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences

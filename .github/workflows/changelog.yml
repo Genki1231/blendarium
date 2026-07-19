@@ -1,0 +1,43 @@
+name: changelog
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - CHANGELOG.md
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      # git-cliff needs the complete commit and tag history to build every section.
+      - name: Check out the complete repository history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate CHANGELOG.md
+        uses: orhun/git-cliff-action@v4
+        with:
+          config: cliff.toml
+          args: --output CHANGELOG.md
+
+      - name: Commit and push the changelog when it changed
+        shell: bash
+        run: |
+          # Staging first detects both modifications and a newly created file.
+          git add CHANGELOG.md
+          if git diff --cached --quiet; then
+            echo "CHANGELOG.md is already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "docs: update CHANGELOG.md"
+          # A push made with GITHUB_TOKEN does not trigger another workflow run.
+          git push

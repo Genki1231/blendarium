@@ -1,0 +1,6 @@
+# Compatible-release constraints accept fixes within each selected major series
+# while preventing an unreviewed major-version upgrade in the documentation job.
+mkdocs-material~=9.6
+mkdocstrings[python]~=0.30
+mkdocs-gen-files~=0.5
+mkdocs-literate-nav~=0.6

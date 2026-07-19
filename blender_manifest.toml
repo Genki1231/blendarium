@@ -27,4 +27,11 @@ paths_exclude_pattern = [
   "/.idea/",
   "/dev_loader.py",
   "/dev/",
+  "/docs/",
+  "/mkdocs.yml",
+  "/requirements-docs.txt",
+  "/site/",
+  "/.github/",
+  "/cliff.toml",
+  "/CHANGELOG.md",
 ]
