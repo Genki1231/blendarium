@@ -16,7 +16,7 @@ jobs:
     steps:
       # git-cliff needs the complete commit and tag history to build every section.
       - name: Check out the complete repository history
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
