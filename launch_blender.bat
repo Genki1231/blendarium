@@ -14,7 +14,7 @@ rem (including the trailing backslash), so the script works no matter
 rem where it is launched from.
 rem ------------------------------------------------------------------
 
-set "BLENDER_EXE=C:\Program Files\Blender Foundation\Blender 5.1\blender.exe"
+set "BLENDER_EXE=C:\Program Files\Blender Foundation\Blender 5.2\blender.exe"
 
 if not exist "%BLENDER_EXE%" (
     echo [ERROR] Blender not found: "%BLENDER_EXE%"
